@@ -15,11 +15,9 @@ const io = new Server(httpServer, {
   },
 });
 
-// Load translations
 const translationsPath = path.join(__dirname, 'translations.json');
 const translations = JSON.parse(fs.readFileSync(translationsPath, 'utf-8'));
 
-// Create a map for quick lookup
 const translationMap = {};
 translations.translations.forEach((item) => {
   translationMap[item.english.toLowerCase()] = {
@@ -28,7 +26,6 @@ translations.translations.forEach((item) => {
   };
 });
 
-// Handle socket connections
 io.on('connection', (socket) => {
   console.log('User connected:', socket.id);
 
@@ -49,7 +46,6 @@ io.on('connection', (socket) => {
       };
       socket.emit('translation', result);
     } else {
-      // If no exact match, try partial match or return a message
       const result = {
         original: text,
         translated: `[No translation found for "${text}"]`,

@@ -59,19 +59,15 @@ export default function App() {
   return (
     <div className="app-root">
       <div className="app-container">
-
-        {/* Header */}
         <header className="app-header">
           <h1>Voice Translator</h1>
-          <p>Speak once. Understand instantly.</p>
+          <h3>Speak once. Understand instantly.</h3>
 
           <div className={`connection ${connected ? 'ok' : 'bad'}`}>
             <span />
             {connected ? 'Connected' : 'Disconnected'}
           </div>
         </header>
-
-        {/* Language selector */}
         <div className="language-switch">
           {(['spanish', 'german'] as const).map(lang => (
             <button
@@ -83,8 +79,6 @@ export default function App() {
             </button>
           ))}
         </div>
-
-        {/* Mic */}
         <div className="mic-wrapper">
           <button
             onClick={isListening ? stopListening : startListening}
@@ -97,8 +91,6 @@ export default function App() {
             {isListening ? 'Listening…' : 'Tap to speak'}
           </p>
         </div>
-
-        {/* Transcript */}
         {transcript && (
           <div className="transcript">
             <small>{isFinal ? 'Final transcript' : 'Listening'}</small>
@@ -116,11 +108,7 @@ export default function App() {
             )}
           </div>
         )}
-
-        {/* Error */}
         {error && <div className="error">{error}</div>}
-
-        {/* History */}
         {translations.length > 0 && (
           <div className="history">
             {translations.map((t, i) => (
