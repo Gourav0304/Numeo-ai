@@ -1,12 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 
-interface SpeechRecognitionEvent extends Event {
-  results: SpeechRecognitionResultList;
-  isFinal: boolean;
-}
-
-interface SpeechRecognitionErrorEvent extends Event {
-  error: string;
+interface SpeechRecognitionAlternative {
+  transcript: string;
+  confidence: number;
 }
 
 interface SpeechRecognitionResult {
@@ -19,13 +15,42 @@ interface SpeechRecognitionResultList {
   length: number;
 }
 
-interface SpeechRecognitionAlternative {
-  transcript: string;
-  confidence: number;
+interface SpeechRecognitionEvent extends Event {
+  results: SpeechRecognitionResultList;
+  isFinal: boolean;
+}
+
+interface SpeechRecognitionErrorEvent extends Event {
+  error: string;
+}
+
+interface ISpeechRecognition extends EventTarget {
+  continuous: boolean;
+  interimResults: boolean;
+  lang: string;
+  onstart: ((this: ISpeechRecognition, ev: Event) => void) | null;
+  onresult: ((this: ISpeechRecognition, ev: SpeechRecognitionEvent) => void) | null;
+  onerror: ((this: ISpeechRecognition, ev: SpeechRecognitionErrorEvent) => void) | null;
+  onend: ((this: ISpeechRecognition, ev: Event) => void) | null;
+  start(): void;
+  stop(): void;
+  abort(): void;
+}
+
+interface SpeechRecognitionConstructor {
+  new (): ISpeechRecognition;
+  prototype: ISpeechRecognition;
+}
+
+declare global {
+  interface Window {
+    SpeechRecognition: SpeechRecognitionConstructor;
+    webkitSpeechRecognition: SpeechRecognitionConstructor;
+  }
 }
 
 const SpeechRecognition =
-  window.SpeechRecognition || (window as any).webkitSpeechRecognition;
+  window.SpeechRecognition || window.webkitSpeechRecognition;
 
 interface UseVoiceRecordingReturn {
   isListening: boolean;
@@ -41,12 +66,13 @@ export const useVoiceRecording = (): UseVoiceRecordingReturn => {
   const [isListening, setIsListening] = useState(false);
   const [transcript, setTranscript] = useState('');
   const [isFinal, setIsFinal] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(
+    !SpeechRecognition ? 'Speech Recognition API not supported in this browser' : null
+  );
   const recognitionRef = useRef<InstanceType<typeof SpeechRecognition> | null>(null);
 
   useEffect(() => {
     if (!SpeechRecognition) {
-      setError('Speech Recognition API not supported in this browser');
       return;
     }
 

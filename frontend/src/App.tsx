@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useVoiceRecording } from './hooks/useVoiceRecording';
-import { initializeSocket, getSocket, sendTranslationRequest } from './socket';
+import { initializeSocket, sendTranslationRequest } from './socket';
 import './App.css';
 
 interface Translation {
@@ -48,17 +48,17 @@ function App() {
     }
   };
 
-  const handleRecordingComplete = () => {
+  const handleRecordingComplete = useCallback(() => {
     if (transcript.trim() && isFinal) {
       sendTranslationRequest(transcript, targetLanguage);
     }
-  };
+  }, [transcript, isFinal, targetLanguage]);
 
   useEffect(() => {
     if (isFinal && transcript.trim()) {
       handleRecordingComplete();
     }
-  }, [isFinal, transcript]);
+  }, [handleRecordingComplete, isFinal, transcript]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8">
