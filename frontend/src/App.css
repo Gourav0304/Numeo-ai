@@ -140,12 +140,6 @@ body {
   border-radius: 12px;
 }
 
-.history {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
 .bubble-group {
   display: flex;
   flex-direction: column;
