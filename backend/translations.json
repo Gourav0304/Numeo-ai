@@ -1,0 +1,99 @@
+{
+  "translations": [
+    {
+      "english": "hello world",
+      "spanish": "hola mundo",
+      "german": "hallo welt"
+    },
+    {
+      "english": "how are you",
+      "spanish": "¿cómo estás?",
+      "german": "wie geht es dir?"
+    },
+    {
+      "english": "good morning",
+      "spanish": "buenos días",
+      "german": "guten morgen"
+    },
+    {
+      "english": "thank you very much",
+      "spanish": "muchas gracias",
+      "german": "vielen dank"
+    },
+    {
+      "english": "what is your name",
+      "spanish": "¿cuál es tu nombre?",
+      "german": "wie heißt du?"
+    },
+    {
+      "english": "nice to meet you",
+      "spanish": "mucho gusto",
+      "german": "freut mich dich zu treffen"
+    },
+    {
+      "english": "where is the bathroom",
+      "spanish": "¿dónde está el baño?",
+      "german": "wo ist das badezimmer?"
+    },
+    {
+      "english": "i love this place",
+      "spanish": "me encanta este lugar",
+      "german": "ich liebe diesen ort"
+    },
+    {
+      "english": "can you help me",
+      "spanish": "¿puedes ayudarme?",
+      "german": "kannst du mir helfen?"
+    },
+    {
+      "english": "see you later",
+      "spanish": "nos vemos luego",
+      "german": "bis später"
+    },
+    {
+      "english": "hello how is it going",
+      "spanish": "hola ¿qué tal?",
+      "german": "hallo wie geht es?"
+    },
+    {
+      "english": "it is a beautiful day",
+      "spanish": "es un día hermoso",
+      "german": "es ist ein schöner tag"
+    },
+    {
+      "english": "what time is it",
+      "spanish": "¿qué hora es?",
+      "german": "wie spät ist es?"
+    },
+    {
+      "english": "i do not understand",
+      "spanish": "no entiendo",
+      "german": "ich verstehe nicht"
+    },
+    {
+      "english": "do you speak english",
+      "spanish": "¿hablas inglés?",
+      "german": "sprichst du englisch?"
+    },
+    {
+      "english": "how much does it cost",
+      "spanish": "¿cuánto cuesta?",
+      "german": "wie viel kostet es?"
+    },
+    {
+      "english": "i am hungry",
+      "spanish": "tengo hambre",
+      "german": "ich habe hunger"
+    },
+    {
+      "english": "that sounds great",
+      "spanish": "eso suena genial",
+      "german": "das klingt toll"
+    },
+    {
+      "english": "the weather is nice today",
+      "spanish": "el clima es agradable hoy",
+      "german": "das wetter ist heute schön"
+    }
+  ]
+}
