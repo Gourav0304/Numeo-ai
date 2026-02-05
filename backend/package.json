@@ -1,0 +1,17 @@
+{
+  "name": "voice-translator-backend",
+  "version": "1.0.0",
+  "description": "Backend for real-time voice translation",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "^4.7.2"
+  }
+}
