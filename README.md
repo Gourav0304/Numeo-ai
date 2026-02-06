@@ -2,6 +2,8 @@
 
 A modern web application that records user voice input and translates spoken sentences in real-time using WebSocket communication.
 
+![Voice Translator Demo](frontend/src/assets/translator.gif)
+
 ## Features
 
 ✨ **Real-time Voice Recording**: Uses Web Speech API to convert spoken words to text in real-time  
