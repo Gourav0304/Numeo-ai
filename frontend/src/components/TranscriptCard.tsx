@@ -4,11 +4,11 @@ interface TranscriptCardProps {
   onTranslate: () => void;
 }
 
-export default function TranscriptCard({
+export const TranscriptCard = ({
   transcript,
   isFinal,
   onTranslate,
-}: TranscriptCardProps) {
+}: TranscriptCardProps) => {
   if (!transcript) {
     return null;
   }

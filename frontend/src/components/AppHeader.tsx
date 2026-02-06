@@ -2,7 +2,7 @@ interface AppHeaderProps {
   connected: boolean;
 }
 
-export default function AppHeader({ connected }: AppHeaderProps) {
+export const AppHeader = ({ connected }: AppHeaderProps) => {
   return (
     <header className="app-header">
       <h1>Voice Translator</h1>

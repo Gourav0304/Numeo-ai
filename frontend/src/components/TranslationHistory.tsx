@@ -4,9 +4,9 @@ interface TranslationHistoryProps {
   translations: Translation[];
 }
 
-export default function TranslationHistory({
+export const TranslationHistory = ({
   translations,
-}: TranslationHistoryProps) {
+}: TranslationHistoryProps) => {
   if (translations.length === 0) {
     return null;
   }

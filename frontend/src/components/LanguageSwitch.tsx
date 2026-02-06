@@ -1,21 +1,23 @@
+import { TargetLanguage } from '../types';
+
 interface LanguageSwitchProps {
-  targetLanguage: 'spanish' | 'german';
-  onChange: (language: 'spanish' | 'german') => void;
+  targetLanguage: TargetLanguage;
+  onChange: (language: TargetLanguage) => void;
 }
 
-export default function LanguageSwitch({
+export const LanguageSwitch = ({
   targetLanguage,
   onChange,
-}: LanguageSwitchProps) {
+}: LanguageSwitchProps) => {
   return (
     <div className="language-switch">
-      {(['spanish', 'german'] as const).map(lang => (
+      {([TargetLanguage.Spanish, TargetLanguage.German] as const).map(lang => (
         <button
           key={lang}
           onClick={() => onChange(lang)}
           className={targetLanguage === lang ? 'active' : ''}
         >
-          {lang === 'spanish' ? '🇪🇸 Spanish' : '🇩🇪 German'}
+          {lang === TargetLanguage.Spanish ? '🇪🇸 Spanish' : '🇩🇪 German'}
         </button>
       ))}
     </div>

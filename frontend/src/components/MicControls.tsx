@@ -5,12 +5,12 @@ interface MicControlsProps {
   onStop: () => void;
 }
 
-export default function MicControls({
+export const MicControls = ({
   isListening,
   connected,
   onStart,
   onStop,
-}: MicControlsProps) {
+}: MicControlsProps) => {
   return (
     <div className="mic-wrapper">
       <button

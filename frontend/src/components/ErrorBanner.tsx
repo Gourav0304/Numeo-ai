@@ -2,7 +2,7 @@ interface ErrorBannerProps {
   error: string | null;
 }
 
-export default function ErrorBanner({ error }: ErrorBannerProps) {
+export const ErrorBanner = ({ error }: ErrorBannerProps) => {
   if (!error) {
     return null;
   }

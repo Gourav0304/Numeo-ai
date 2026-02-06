@@ -1,4 +1,5 @@
 import { io, Socket } from 'socket.io-client';
+import { TargetLanguage } from './types';
 
 let socket: Socket | null = null;
 
@@ -29,7 +30,7 @@ export const getSocket = () => {
   return socket;
 };
 
-export const sendTranslationRequest = (text: string, targetLanguage: 'spanish' | 'german') => {
+export const sendTranslationRequest = (text: string, targetLanguage: TargetLanguage) => {
   const s = getSocket();
   s.emit('translate', { text, targetLanguage });
 };

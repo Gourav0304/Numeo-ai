@@ -1,66 +1,12 @@
 import { useState, useRef, useEffect } from 'react';
-
-interface SpeechRecognitionAlternative {
-  transcript: string;
-  confidence: number;
-}
-
-interface SpeechRecognitionResult {
-  [index: number]: SpeechRecognitionAlternative;
-  isFinal: boolean;
-}
-
-interface SpeechRecognitionResultList {
-  [index: number]: SpeechRecognitionResult;
-  length: number;
-}
-
-interface SpeechRecognitionEvent extends Event {
-  results: SpeechRecognitionResultList;
-  isFinal: boolean;
-}
-
-interface SpeechRecognitionErrorEvent extends Event {
-  error: string;
-}
-
-interface ISpeechRecognition extends EventTarget {
-  continuous: boolean;
-  interimResults: boolean;
-  lang: string;
-  onstart: ((this: ISpeechRecognition, ev: Event) => void) | null;
-  onresult: ((this: ISpeechRecognition, ev: SpeechRecognitionEvent) => void) | null;
-  onerror: ((this: ISpeechRecognition, ev: SpeechRecognitionErrorEvent) => void) | null;
-  onend: ((this: ISpeechRecognition, ev: Event) => void) | null;
-  start(): void;
-  stop(): void;
-  abort(): void;
-}
-
-interface SpeechRecognitionConstructor {
-  new (): ISpeechRecognition;
-  prototype: ISpeechRecognition;
-}
-
-declare global {
-  interface Window {
-    SpeechRecognition: SpeechRecognitionConstructor;
-    webkitSpeechRecognition: SpeechRecognitionConstructor;
-  }
-}
+import type {
+  SpeechRecognitionEvent,
+  SpeechRecognitionErrorEvent,
+  UseVoiceRecordingReturn,
+} from '../types/voiceRecording';
 
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
-
-interface UseVoiceRecordingReturn {
-  isListening: boolean;
-  transcript: string;
-  isFinal: boolean;
-  error: string | null;
-  startListening: () => void;
-  stopListening: () => void;
-  resetTranscript: () => void;
-}
 
 export const useVoiceRecording = (): UseVoiceRecordingReturn => {
   const [isListening, setIsListening] = useState(false);

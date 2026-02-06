@@ -7,7 +7,7 @@ A modern web application that records user voice input and translates spoken sen
 ✨ **Real-time Voice Recording**: Uses Web Speech API to convert spoken words to text in real-time  
 ✨ **Live Translation**: Sends transcribed text to backend via Socket.io for instant translation  
 ✨ **Multiple Languages**: Supports English to Spanish and German translations  
-✨ **Beautiful UI**: Clean, responsive interface built with React and Tailwind CSS  
+✨ **Beautiful UI**: Clean, responsive interface built with React and CSS  
 ✨ **Connection Status**: Real-time server connection indicator  
 ✨ **Translation History**: View all past translations in a scrollable list  
 
@@ -17,16 +17,22 @@ A modern web application that records user voice input and translates spoken sen
 numeo/
 ├── backend/
 │   ├── server.js              # Node.js server with Socket.io
+│   ├── socketHandlers.js      # Socket event handlers
 │   ├── translations.json      # Mock translation database
+│   ├── .env                   # Backend environment variables
+│   ├── .env.example           # Environment template
 │   ├── package.json
 │   └── package-lock.json
 └── frontend/
     ├── src/
     │   ├── App.tsx            # App shell wiring components
     │   ├── App.css            # Base layout + global styles
-    │   ├── index.css          # Tailwind directives + resets
+    │   ├── index.css          # Global styles + resets
     │   ├── socket.ts          # Socket.io client utility
-    │   ├── types.ts           # Shared TypeScript types
+    │   ├── types/             # Shared TypeScript types
+    │   │   ├── index.ts
+    │   │   ├── translation.ts
+    │   │   └── voiceRecording.ts
     │   ├── components/
     │   │   ├── AppHeader.tsx
     │   │   ├── ErrorBanner.tsx
@@ -40,8 +46,6 @@ numeo/
     │   └── vite-env.d.ts
     ├── public/
     ├── package.json
-    ├── tailwind.config.js
-    ├── postcss.config.js
     ├── vite.config.ts
     └── tsconfig.json
 ```
@@ -51,13 +55,11 @@ numeo/
 ### Backend
 - **Node.js**: JavaScript runtime
 - **Socket.io**: Real-time bidirectional communication
-- **Express**: Optional HTTP server (using Socket.io's built-in http server)
 
 ### Frontend
-- **React 18**: UI framework
+- **React 19**: UI framework
 - **TypeScript**: Type safety
 - **Vite**: Build tool and dev server
-- **Tailwind CSS**: Utility-first CSS framework
 - **Socket.io-client**: WebSocket client library
 
 ### APIs
@@ -204,19 +206,14 @@ Edit `backend/translations.json` to add more phrase translations:
 
 ### Changing Ports
 
-- **Backend**: Modify `const PORT = 3002` in `backend/server.js`
+- **Backend**: Set `PORT` in `backend/.env`
 - **Frontend**: Vite automatically detects available ports or modify `vite.config.ts`
 - **Socket.io URL**: Update `http://localhost:3002` in `frontend/src/socket.ts`
+ - **CORS origin**: Set `CLIENT_ORIGIN` in `backend/.env`
 
 ### Styling
 
-Styling is split between Tailwind CSS utility classes in component JSX and shared base styles in `src/App.css` (layout + global styles). Tailwind directives live in `src/index.css`.
-
-```tsx
-<button className="bg-blue-500 text-white px-4 py-2 rounded">
-  Click me
-</button>
-```
+Styling is handled with standard CSS in `src/App.css` and `src/index.css`.
 
 ## Troubleshooting
 
@@ -236,7 +233,7 @@ Styling is split between Tailwind CSS utility classes in component JSX and share
 - Check backend console for debug logs
 
 ### Port Already in Use
-- Backend: Change PORT in `server.js`
+- Backend: Change `PORT` in `backend/.env`
 - Frontend: Vite will automatically use next available port
 
 ## Future Enhancements

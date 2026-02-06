@@ -1,14 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useVoiceRecording } from './hooks/useVoiceRecording';
 import { initializeSocket, sendTranslationRequest } from './socket';
-import AppHeader from './components/AppHeader';
-import LanguageSwitch from './components/LanguageSwitch';
-import MicControls from './components/MicControls';
-import TranscriptCard from './components/TranscriptCard';
-import ErrorBanner from './components/ErrorBanner';
-import TranslationHistory from './components/TranslationHistory';
 import type { Translation } from './types';
+import { TargetLanguage } from './types';
 import './App.css';
+import { AppHeader, ErrorBanner, LanguageSwitch, MicControls, TranscriptCard, TranslationHistory } from './components';
 
 export default function App() {
   const {
@@ -22,7 +18,7 @@ export default function App() {
   } = useVoiceRecording();
 
   const [targetLanguage, setTargetLanguage] =
-    useState<'spanish' | 'german'>('spanish');
+    useState<TargetLanguage>(TargetLanguage.Spanish);
   const [translations, setTranslations] = useState<Translation[]>([]);
   const [connected, setConnected] = useState(false);
 
