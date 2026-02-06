@@ -33,4 +33,3 @@ logs
 pids
 *.seed
 frontend/public
-frontend/src/assets
